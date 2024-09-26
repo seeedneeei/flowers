@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF=8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Drawing</title>
+    <style>
+        canvas {
+            background-color: skyblue;
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="flowerCanvas" width="400" height="400"></canvas>
+
+    <script>
+        const canvas = document.getElementById('flowerCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function drawPetal(x, y, radius, angle) {
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.arc(x, y, radius, angle, angle + Math.PI / 3, false);
+            ctx.lineTo(x, y);
+            ctx.fillStyle = 'magenta';
+            ctx.fill();
+        }
+
+        function drawFlower() {
+            const centerX = canvas.width / 2; 
+            const centerY = canvas.height / 2;
+
+            for (let i = 0; i < 6; i++) {
+                const angel = (Math.PI / 3) * i;
+                drawPetal(centerX, centerY, 100, angle);
+            }
+
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 30, 0, 2 * Math.PI, false);
+            ctx.fillStyle = 'yellow';
+            ctx.fill();
+        }
+
+        drawFlower();
+    </script>
+</body>
+</html>
